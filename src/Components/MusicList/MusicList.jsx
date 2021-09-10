@@ -21,8 +21,10 @@ class MusicList extends Component {
         })
     }
 
-    deleteSong(element){
-        console.log(element)
+    async deleteSong(element){
+        let response =  await axios.delete('http://127.0.0.1:8000/music/'+element.id+'/')
+        console.log(response)
+        this.getSongs()
     }
 
     render() { 
@@ -35,8 +37,7 @@ class MusicList extends Component {
                 <th>Release Date</th>
                 <th>Genre</th><hr />
             </thead>
-                {this.state.songs.map((element) => <tbody><td>{element.title}</td> <td>{element.artist}</td> <td>{element.album}</td><td>{element.release_date}</td><td>{element.genre}</td>
-                <button type = 'submit' onSubmit = {this.deleteSong(element)}>Delete</button></tbody> )}      
+                {this.state.songs.map((element) => <><tbody><td>{element.title}</td> <td>{element.artist}</td> <td>{element.album}</td><td>{element.release_date}</td><td>{element.genre}</td><td><button onClick={() => this.deleteSong(element)}>Delete</button></td></tbody></> )}      
         </table>
          );
     }
