@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import './MusicList.css'
+import CreateSong from '../CreateSong/CreateSong';
 
 class MusicList extends Component {
     constructor(props) {
@@ -10,15 +11,21 @@ class MusicList extends Component {
          }
     }
 
+    
     componentDidMount(){
         this.getSongs()
     }
-
+    
     async getSongs(){
         let response = await axios.get('http://127.0.0.1:8000/music/')
         this.setState({
             songs: response.data
         })
+    }
+
+    async createSong(newSong){
+        let response = await axios.post('http://127.0.0.1:8000/music/', newSong)
+
     }
 
     async deleteSong(element){
@@ -28,17 +35,20 @@ class MusicList extends Component {
     }
 
     render() { 
-        return ( 
-            <table>
-            <thead>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Release Date</th>
-                <th>Genre</th><hr />
-            </thead>
+        return (
+        <React.Fragment>
+            <table width = '100%'>
+                <thead>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Release Date and Time</th>
+                    <th>Genre</th>
+                </thead>
                 {this.state.songs.map((element) => <><tbody><td>{element.title}</td> <td>{element.artist}</td> <td>{element.album}</td><td>{element.release_date}</td><td>{element.genre}</td><td><button onClick={() => this.deleteSong(element)}>Delete</button></td></tbody></> )}      
-        </table>
+            </table>
+            <CreateSong createSong = {this.createSong}/>
+        </React.Fragment> 
          );
     }
 }
