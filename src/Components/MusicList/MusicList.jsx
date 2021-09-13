@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import './MusicList.css'
 import CreateSong from '../CreateSong/CreateSong';
+import FilterSearch from '../FilteredSearch/FilteredSearch';
 
 class MusicList extends Component {
     constructor(props) {

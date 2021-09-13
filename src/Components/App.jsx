@@ -9,7 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            songs: [],
+            songs: []
          }
     }
 
@@ -27,8 +27,9 @@ class App extends Component {
     render() { 
         return ( 
             <React.Fragment>
-                <FilterSearch songs = {this.state.songs}/>
+                {/* <FilterSearch songs = {this.state.theSongs}/> */}
                 <MusicList/>
+                <FilterSearch/>
             </React.Fragment>
          );
     }
