@@ -27,17 +27,14 @@ class MusicList extends Component {
 
     async createSong(newSong){
         let response = await axios.post('http://127.0.0.1:8000/music/', newSong)
-
     }
 
     async deleteSong(element){
         let response =  await axios.delete('http://127.0.0.1:8000/music/'+element.id+'/')
-        console.log(response)
         this.getSongs()
     }
 
     handleChange = (event) =>{
-        event.preventDefault();
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -50,7 +47,7 @@ class MusicList extends Component {
 
     filteredSearch = () =>{
         let filteredResults = this.state.songs.filter(song => {
-            return song.title.toLowerCase().includes(this.state.search) || song.artist.toLowerCase().includes(this.state.search) || song.album.toLowerCase().includes(this.state.search) || song.release_date.toLowerCase().includes(this.state.search) || song.genre.toLowerCase().includes(this.state.search)
+            return song.title.toLowerCase().includes(this.state.search.toLowerCase()) || song.artist.toLowerCase().includes(this.state.search.toLowerCase()) || song.album.toLowerCase().includes(this.state.search.toLowerCase()) || song.release_date.toLowerCase().includes(this.state.search.toLowerCase()) || song.genre.toLowerCase().includes(this.state.search.toLowerCase())
         })
         this.setState({
             songs : filteredResults
@@ -70,7 +67,7 @@ class MusicList extends Component {
                         <th>Release Date and Time</th>
                         <th>Genre</th>
                         <th>
-                            <form onChange = {this.handleSubmit}>
+                            <form onSubmit = {this.handleSubmit}>
                                 <input name= 'search' onChange = {this.handleChange} value = {this.state.search}/> 
                                 <button type = 'submit'>Search!</button>
                             </form>
@@ -83,11 +80,13 @@ class MusicList extends Component {
                 {this.state.songs.map((element) => <><tbody><tr class="active-row"><td>{element.title}</td> <td>{element.artist}</td> <td>{element.album}</td><td>{element.release_date}</td><td>{element.genre}</td><td><button onClick={() => this.deleteSong(element)}>Delete</button></td></tr></tbody></> )}      
             </table>
             <table class='styled-table'>
+                <tbody>
                 <tr>
-                    <th class="active-row">
+                    <td class="active-row">
                     <CreateSong createSong = {this.createSong}/>    
-                    </th>
+                    </td>
                 </tr>
+                </tbody>
             </table>
             
         </React.Fragment> 

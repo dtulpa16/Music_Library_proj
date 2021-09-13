@@ -18,10 +18,7 @@ class CreateSong extends Component {
     }
 
     handleSubmit = (event) =>{
-
-        
         this.props.createSong(this.state);
-        console.log(this.state)
     }
 
     render() { 
