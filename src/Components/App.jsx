@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './App.css'
 import MusicList from './MusicList/MusicList';
 import axios from 'axios';
+import TitleBar from './TitleBar/TitleBar';
+import PageFooter from './PageFooter/PageFooter';
 
 
 class App extends Component {
@@ -27,7 +29,9 @@ class App extends Component {
     render() { 
         return ( 
             <React.Fragment>
+                <TitleBar/>
                 <MusicList/>
+                <PageFooter/>
             </React.Fragment>
          );
     }
