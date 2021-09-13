@@ -6,7 +6,8 @@ class FilteredSearch extends Component {
     super(props);
     this.state = { 
       songs:[],
-      search: ''
+      search: '',
+      searchResult: ''
      }
   }
 
@@ -23,6 +24,7 @@ async getSongs(){
 
 
   handleChange = (event) =>{
+    event.preventDefault();
     this.setState({
         [event.target.name]: event.target.value
     })
@@ -33,11 +35,11 @@ handleSubmit = (event) =>{
     this.filteredSearch()
 }
 
-filteredSearch = () =>{
+filteredSearch = (props) =>{
     let filteredResults = this.state.songs.filter(song => {
       return song.title === this.state.search
     })
-    return <h1>{filteredResults.title}</h1>
+    return filteredResults
 }
 
   render() { 
@@ -45,9 +47,10 @@ filteredSearch = () =>{
       <React.Fragment>
       <form onSubmit = {this.handleSubmit}>
       <label>Search song</label>
-      <input name= 'search' onChange = {this.handleChange}/> 
+      <input name= 'search' onChange = {this.handleChange} value = {this.state.search}/> 
       <button type = 'submit'>Search!</button>
       </form>
+      <h1>{this.filteredResults}</h1>
       </React.Fragment>
      );
   }

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './App.css'
 import MusicList from './MusicList/MusicList';
 import axios from 'axios';
-import FilterSearch from './FilteredSearch/FilteredSearch';
 
 
 class App extends Component {
@@ -24,12 +23,11 @@ class App extends Component {
         })
     }
 
+
     render() { 
         return ( 
             <React.Fragment>
-                {/* <FilterSearch songs = {this.state.theSongs}/> */}
                 <MusicList/>
-                <FilterSearch/>
             </React.Fragment>
          );
     }
