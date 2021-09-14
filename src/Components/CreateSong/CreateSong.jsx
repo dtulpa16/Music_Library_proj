@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './CreateSong.css'
 
 class CreateSong extends Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class CreateSong extends Component {
 
     render() { 
         return ( 
-        <form onSubmit = {this.handleSubmit}>
+        <form onSubmit = {this.handleSubmit} className='label'>
             <label>Song Title</label>
             <input name= 'title' onChange = {this.handleChange} value = {this.state.title}/> 
             <label>Artist</label>
@@ -34,7 +35,8 @@ class CreateSong extends Component {
             <input type = 'datetime-local' name = 'release_date' onChange = {this.handleChange} value = {this.state.release_date}/>
             <label>Genre</label>
             <input name = 'genre' onChange = {this.handleChange} value = {this.state.genre}/>
-            <button type = 'submit'>Add Song!</button>
+            <hr />
+            <button type = 'submit' >Add Song!</button>
         </form>
          );
     }

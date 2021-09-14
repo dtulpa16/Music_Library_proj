@@ -28,13 +28,13 @@ class App extends Component {
 
     render() { 
         return ( 
+            <React.Fragment>
                 <div className="my-component">
-
                 <TitleBar/>
                 <MusicList/>
                 <PageFooter/>
-
                 </div>
+            </React.Fragment>
          );
     }
 }

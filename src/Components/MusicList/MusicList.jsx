@@ -79,6 +79,7 @@ class MusicList extends Component {
                 </thead>
                 {this.state.songs.map((element) => <><tbody><tr class="active-row"><td>{element.title}</td> <td>{element.artist}</td> <td>{element.album}</td><td>{element.release_date}</td><td>{element.genre}</td><td><button onClick={() => this.deleteSong(element)}>Delete</button></td></tr></tbody></> )}      
             </table>
+            <h3 className='h3'>Add a Song!</h3>
             <table class='styled-table'>
                 <tbody>
                 <tr>
