@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from "axios";
 import './MusicList.css'
 import CreateSong from '../CreateSong/CreateSong';
-import FilterSearch from '../FilteredSearch/FilteredSearch';
 
 class MusicList extends Component {
     constructor(props) {
@@ -33,6 +32,7 @@ class MusicList extends Component {
         let response =  await axios.delete('http://127.0.0.1:8000/music/'+element.id+'/')
         this.getSongs()
     }
+
 
     handleChange = (event) =>{
         this.setState({
@@ -96,3 +96,4 @@ class MusicList extends Component {
 }
  
 export default MusicList;
+
